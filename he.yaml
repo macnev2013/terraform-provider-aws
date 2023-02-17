@@ -27,7 +27,7 @@ pre:
   - sudo usermod -aG docker `whoami`
   - newgrp docker
   - python3 -m pip install localstack
-  - localstack start -d
+  - localstack start --host -d
   - localstack wait
 
 testDiscovery:
