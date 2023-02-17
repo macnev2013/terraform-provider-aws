@@ -4,7 +4,7 @@ runson: linux
 autosplit: true
 
 
-concurrency: 30
+concurrency: 1
 maxRetries: 1
 testSuiteTimeout: 300
 
