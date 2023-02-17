@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          wget https://downloads.lambdatest.com/hyperexecute/darwin/hyperexecute
+          wget https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute
           chmod +x hyperexecute
           ./hyperexecute --user nevil.macwan --key ${{ secrets.HE }} --config he.yaml
