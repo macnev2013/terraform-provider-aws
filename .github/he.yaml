@@ -1,5 +1,8 @@
 name: HyperExecute
-on: [push]
+on:
+  push:
+    branches:
+      - feat/he
 jobs:
   HE:
     runs-on: ubuntu-latest
