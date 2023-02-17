@@ -24,7 +24,7 @@ pre:
 testDiscovery:
   type: raw
   mode: dynamic
-  command: grep  -nr 'func TestAcc' internal/service/ | sed 's/.*:func //' | sed 's/(.*//'
+  command: grep  -nr 'func TestAcc' internal | sed 's/:.*//'
 
 testRunnerCommand: go test -run $test | go-junit-report -out reports/report.html
 sourcePayload:
