@@ -17,6 +17,8 @@ pre:
   - go get github.com/jstemmer/go-junit-report/v2@latest
   - git apply ./etc/patch/0001-endpoint.patch
   - go mod download
+  - sudo apt-get update
+  - sudo apt-get remove docker docker-engine docker.io containerd runc
   - python3 -m pip install localstack
   - localstack start -d
   - localstack wait
