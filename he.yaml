@@ -14,7 +14,7 @@ env:
 
 pre:
   - go version
-  - go install github.com/jstemmer/go-junit-report/v2@latest
+  - go get github.com/jstemmer/go-junit-report/v2@latest
   - git apply ./etc/patch/0001-endpoint.patch
   - go mod download
   - python3 -m pip install localstack
