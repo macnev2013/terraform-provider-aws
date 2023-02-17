@@ -1,0 +1,33 @@
+---
+version: "0.1"
+runson: linux
+autosplit: true
+
+
+concurrency: 30
+maxRetries: 1
+testSuiteTimeout: 300
+
+env:
+#  PAT: ${{ .secrets.testKey }}
+ TARGET_OS: LINUX
+
+pre:
+  - go version
+  - go install github.com/jstemmer/go-junit-report/v2@latest
+  - git apply ./etc/patch/0001-endpoint.patch
+  - go mod download
+  - python3 -m pip install localstack
+  - localstack start -d
+  - localstack wait
+
+testDiscovery:
+  type: raw
+  mode: dynamic
+  command: grep  -nr 'func TestAcc' internal/service/ | sed 's/.*:func //' | sed 's/(.*//'
+
+testRunnerCommand: go test -run $test | go-junit-report -out reports/report.html
+sourcePayload:
+      platform: git
+      link: git@github.com:macnev2013/terraform-provider-aws.git
+      ref: feat/he
