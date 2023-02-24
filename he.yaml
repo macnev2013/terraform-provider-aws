@@ -14,7 +14,9 @@ env:
 
 pre:
   - ps aux
-  - go version
+  - cat /home/ltuser/scripts/controller.sh
+  - exit 1
+  - dasjhduihfgi
   - go get github.com/jstemmer/go-junit-report/v2@latest
   - git apply ./etc/patch/0001-endpoint.patch
   - go mod download
