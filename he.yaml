@@ -25,13 +25,14 @@ pre:
   - echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   - sudo apt-get update
   - sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
-  # - sudo systemctl start docker
-  # - sudo systemctl enable docker
-  # - sudo systemctl restart docker
-  # - sudo docker ps
-  # - sudo docker compose up -d
-  # - sleep 20
-  # - sudo docker ps -a
+  - sudo usermod -aG docker ltuser
+  - service start docker
+  - service enable docker
+  - service restart docker
+  - docker ps
+  - docker compose up -d
+  - sleep 20
+  - docker ps -a
 
 testDiscovery:
   type: raw
