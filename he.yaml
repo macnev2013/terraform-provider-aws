@@ -13,25 +13,9 @@ env:
  TARGET_OS: LINUX
 
 pre:
-  - ps aux
-  - cat /home/ltuser/scripts/controller.sh
-  - exit 1
-  - dasjhduihfgi
   - go get github.com/jstemmer/go-junit-report/v2@latest
   - git apply ./etc/patch/0001-endpoint.patch
   - go mod download
-  - sudo apt-get update
-  - sudo apt-get install ca-certificates curl gnupg lsb-release
-  - sudo mkdir -m 0755 -p /etc/apt/keyrings
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  - echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  - sudo apt-get update
-  - sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
-  - sudo usermod -aG docker ltuser
-  - sudo service docker
-  - sudo service docker
-  - sudo service docker
-  - docker ps
   - docker compose up -d
   - sleep 20
   - docker ps -a
