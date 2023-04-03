@@ -16,9 +16,9 @@ pre:
   - go get github.com/jstemmer/go-junit-report/v2@latest
   - git apply ./etc/patch/0001-endpoint.patch
   - go mod download
-  - docker compose up -d
+  - sudo docker compose up -d
   - sleep 20
-  - docker ps -a
+  - sudo docker ps -a
 
 testDiscovery:
   type: raw
