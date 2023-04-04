@@ -13,9 +13,9 @@ env:
 #  PAT: ${{ .secrets.testKey }}
 
 pre:
-  - sudo apt-get update
-  - sudo apt-get install -y golang
-  - go version
+  # - sudo apt-get update
+  # - sudo apt-get install -y golang
+  # - go version
   - go get github.com/jstemmer/go-junit-report/v2@latest
   - git apply ./etc/patch/0001-endpoint.patch
   - go mod download
@@ -29,7 +29,7 @@ testDiscovery:
   # command: grep  -nr 'func TestAcc' internal |  sed 's/.*:func //' | sed 's/(.*//' | head
   command: grep  -nr 'func TestAccEC2' internal |  sed 's/.*:func //' | sed 's/(.*//' | head
 
-testRunnerCommand: /usr/local/go/bin/go test -run $test | go-junit-report -out reports/report.html
+testRunnerCommand: go test -run $test
 sourcePayload:
       platform: git
       link: https://github.com/macnev2013/terraform-provider-aws.git
