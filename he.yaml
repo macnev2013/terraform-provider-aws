@@ -13,22 +13,21 @@ env:
 #  PAT: ${{ .secrets.testKey }}
 
 pre:
-  - echo $PATH
-  # - wget -c https://go.dev/dl/go1.20.2.linux-386.tar.gz
-  # - sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.20.2.linux-386.tar.gz
-  # - export PATH=$PATH:/usr/local/go/bin
-  # - go version
-  # - go get github.com/jstemmer/go-junit-report/v2@latest
-  # - git apply ./etc/patch/0001-endpoint.patch
-  # - go mod download
-  # - docker compose up -d
-  # - sleep 20
-  # - docker ps -a
+  - sudo apt-get update
+  - sudo apt-get install -y golang
+  - go version
+  - go get github.com/jstemmer/go-junit-report/v2@latest
+  - git apply ./etc/patch/0001-endpoint.patch
+  - go mod download
+  - docker compose up -d
+  - sleep 20
+  - docker ps -a
 
 testDiscovery:
   type: raw
   mode: dynamic
-  command: grep  -nr 'func TestAcc' internal | sed 's/:.*//'
+  # command: grep  -nr 'func TestAcc' internal |  sed 's/.*:func //' | sed 's/(.*//' | head
+  command: grep  -nr 'func TestAccEC2' internal |  sed 's/.*:func //' | sed 's/(.*//' | head
 
 testRunnerCommand: /usr/local/go/bin/go test -run $test | go-junit-report -out reports/report.html
 sourcePayload:
