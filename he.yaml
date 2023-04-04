@@ -14,7 +14,7 @@ env:
 
 pre:
   - wget -c https://go.dev/dl/go1.20.2.linux-386.tar.gz
-  - rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.2.linux-386.tar.gz
+  - sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.20.2.linux-386.tar.gz
   - export PATH=$PATH:/usr/local/go/bin
   - go version
   - go get github.com/jstemmer/go-junit-report/v2@latest
