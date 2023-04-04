@@ -13,7 +13,6 @@ env:
 #  PAT: ${{ .secrets.testKey }}
 
 pre:
-  - printenv
   # - sudo apt-get update
   # - sudo apt-get install -y golang
   # - go version
@@ -21,8 +20,9 @@ pre:
   # - sudo tar -xvf go1.20.2.linux-amd64.tar.gz
   # - sudo mv go /usr/local
   # - export GOROOT=/usr/local/go
-  - go get github.com/jstemmer/go-junit-report/v2@latest
+  # - go get github.com/jstemmer/go-junit-report/v2@latest
   - git apply ./etc/patch/0001-endpoint.patch
+  - go mod tidy
   - go mod download
   - docker compose up -d
   - sleep 20
