@@ -22,6 +22,8 @@ pre:
   - sleep 20
   - docker ps -a
   - curl http://localhost:4566/health
+  - go test -c internal/service/s3 -o test.bin
+  - chmod +x test.bin
 
 testDiscovery:
   type: raw
@@ -29,7 +31,9 @@ testDiscovery:
   # command: grep  -nr 'func TestAcc' internal |  sed 's/.*:func //' | sed 's/(.*//' | head
   command: grep  -nr 'func TestAccS3BucketObject' internal/service/ |  sed 's/.*:func //' | sed 's/(.*//' | head
 
-testRunnerCommand: go test -timeout 30s -run ^$test$ github.com/hashicorp/terraform-provider-aws/internal/service/s3
+
+# testRunnerCommand: go test -timeout 30s -run ^$test$ github.com/hashicorp/terraform-provider-aws/internal/service/s3
+testRunnerCommand: ./test.bin -test.v -test.parallel=1 -test.count=1 -test.timeout=60m -test.run=^$test$
 sourcePayload:
       platform: git
       link: https://github.com/macnev2013/terraform-provider-aws.git
