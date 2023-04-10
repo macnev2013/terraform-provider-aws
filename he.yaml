@@ -26,7 +26,7 @@ testDiscovery:
   type: raw
   mode: dynamic
   # command: grep  -nr 'func TestAcc' internal |  sed 's/.*:func //' | sed 's/(.*//' | head
-  command: grep  -nr 'func TestAccEC2' internal |  sed 's/.*:func //' | sed 's/(.*//' | head
+  command: grep  -nr 'func TestAccS3BucketObject' internal/service/ |  sed 's/.*:func //' | sed 's/(.*//' | head
 
 testRunnerCommand: go test -run $test
 sourcePayload:
