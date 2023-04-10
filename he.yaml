@@ -22,7 +22,7 @@ pre:
   - sleep 20
   - docker ps -a
   - curl http://localhost:4566/health
-  - go test -c internal/service/s3 -o test.bin
+  - go test -c ./internal/service/s3 -o test.bin
   - chmod +x test.bin
 
 testDiscovery:
