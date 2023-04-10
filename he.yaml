@@ -13,14 +13,6 @@ env:
 #  PAT: ${{ .secrets.testKey }}
 
 pre:
-  - sudo apt-get update
-  - sudo apt-get install -y golang=1.16.4
-  - go install golang.org/dl/go1.19@latest
-  # - go version
-  # - wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz 
-  # - sudo tar -xvf go1.20.2.linux-amd64.tar.gz
-  # - sudo mv go /usr/local
-  # - export GOROOT=/usr/local/go
   # - go get github.com/jstemmer/go-junit-report/v2@latest
   - git apply ./etc/patch/0001-endpoint.patch
   - go mod tidy
@@ -28,6 +20,7 @@ pre:
   - docker compose up -d
   - sleep 20
   - docker ps -a
+  - curl http://localhost:4566/health
 
 testDiscovery:
   type: raw
