@@ -14,6 +14,7 @@ env:
 
 pre:
   # - go get github.com/jstemmer/go-junit-report/v2@latest
+  - go version
   - git apply ./etc/patch/0001-endpoint.patch
   - go mod tidy
   - go mod download
