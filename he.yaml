@@ -18,8 +18,8 @@ pre:
   - docker compose up -d
   - sleep 20
   - docker ps -a
+  - curl http://localhost:4566/health
   - go test -c
-  # - curl http://localhost:4566/health
 cacheDirectories:
   - cache
 
