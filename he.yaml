@@ -3,7 +3,7 @@ version: "0.1"
 runson: linux
 autosplit: true
 
-concurrency: 1
+concurrency: 30
 maxRetries: 1
 testSuiteTimeout: 300
 
@@ -28,7 +28,7 @@ cacheKey: '{{ checksum "go.mod" }}'
 testDiscovery:
   type: raw
   mode: dynamic
-  command: grep  -nr 'func TestAcc' internal |  sed 's/.*:func //' | sed 's/(.*//'
+  command: grep  -nr 'func TestAcc' ./internal/service/$service |  sed 's/.*:func //' | sed 's/(.*//'
   # command: grep  -nr 'func TestAccS3BucketObject' ./internal/service/s3 |  sed 's/.*:func //' | sed 's/(.*//' | head
 
 # testRunnerCommand: go test -v -timeout 30s -run ^$test$ github.com/hashicorp/terraform-provider-aws/internal/service/s3
