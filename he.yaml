@@ -32,7 +32,7 @@ testDiscovery:
   # command: grep  -nr 'func TestAccS3BucketObject' ./internal/service/s3 |  sed 's/.*:func //' | sed 's/(.*//' | head
 
 # testRunnerCommand: go test -v -timeout 30s -run ^$test$ github.com/hashicorp/terraform-provider-aws/internal/service/s3
-testRunnerCommand: TF_ACC=1 AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test AWS_DEFAULT_REGION=us-west-1 AWS_ALTERNATE_ACCESS_KEY_ID=test AWS_ALTERNATE_SECRET_ACCESS_KEY=test AWS_ALTERNATE_SECRET_ACCESS_KEY=test AWS_ALTERNATE_REGION=us-east-2 AWS_THIRD_REGION=eu-west-1 go test -v -timeout 30s -run ^$test$ ./internal/service/s3
+testRunnerCommand: TF_ACC=1 AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test AWS_DEFAULT_REGION=us-west-1 AWS_ALTERNATE_ACCESS_KEY_ID=test AWS_ALTERNATE_SECRET_ACCESS_KEY=test AWS_ALTERNATE_SECRET_ACCESS_KEY=test AWS_ALTERNATE_REGION=us-east-2 AWS_THIRD_REGION=eu-west-1 go test -v -timeout 30s -run ^$test$ ./$(grep  -nr 'func $test' internal | sed 's:/[^/]*$::')
 # testRunnerCommand: ./test.bin -test.v -test.parallel=1 -test.count=1 -test.timeout=60m -test.run=^$test$
 sourcePayload:
   platform: git
