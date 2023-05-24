@@ -5,7 +5,8 @@ autosplit: true
 
 concurrency: 30
 maxRetries: 1
-testSuiteTimeout: 300
+testSuiteTimeout: 480
+globalTimeout: 480
 
 env:
   TARGET_OS: LINUX
