@@ -8,7 +8,6 @@ maxRetries: 1
 testSuiteTimeout: 480
 globalTimeout: 480
 
-
 env:
   TARGET_OS: LINUX
   GOCACHE: /home/ltuser/foreman/terraform-provider-aws/cache
