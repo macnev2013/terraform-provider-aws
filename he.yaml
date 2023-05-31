@@ -16,7 +16,7 @@ pre:
   - git apply ./etc/patch/0001-endpoint.patch
   - go mod tidy
   - go mod download
-  - docker compose up -d
+  - LOCALSTACK_API_KEY=${{ .secrets.LOCALSTACK_API_KEY }} docker compose up -d
   - sleep 20
   - docker ps -a
   - curl http://localhost:4566/health
