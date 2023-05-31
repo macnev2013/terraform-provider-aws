@@ -25,7 +25,7 @@ cacheDirectories:
 
 cacheKey: '{{ checksum "go.mod" }}'
 matrix:
-  service: ["s3","elb"]
+  service: ['events', 'sts', 'appautoscaling', 'organizations', 'docdb', 'secretsmanager', 'kafka', 'lakeformation', 'iot', 'rds', 'elasticsearch', 'autoscaling', 'backup', 'glue', 'qldb', 'ecr', 'efs', 'cloudtrail', 'ssm', 'redshift', 'route53resolver', 'sns', 'logs', 'ses', 'ecs', 'emr', 'elasticbeanstalk', 'opensearch', 's3control', 'amplify', 'appsync', 'elasticache', 'eks', 'elbv2', 'iotanalytics', 'swf', 'athena', 'elb', 'glacier', 'sqs', 'acm', 'cloudformation', 'ec2', 'serverlessrepo', 'kinesis', 'cognitoidp', 'mediastore', 'route53', 'cloudfront', 'codecommit', 'mwaa', 'resourcegroups', 'batch', 'sagemaker', 'dynamodb', 'kinesisanalytics', 'cognitoidentity', 'firehose', 'mq', 'configservice', 'apigateway', 'resourcegroupstaggingapi', 'transcribe', 'neptune', 'cloudwatch', 'apigatewayv2', 'lambda', 'iam', 'fis', 'appconfig', 'kms', 's3']
   os: ["linux"]
   
 testDiscovery:
