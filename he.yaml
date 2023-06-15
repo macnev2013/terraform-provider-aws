@@ -1,7 +1,7 @@
 version: "0.1"
 runson: ${matrix.os}
 autosplit: true
-parallelism: 1
+parallelism: 2
 concurrency: 30
 maxRetries: 1
 testSuiteTimeout: 480
